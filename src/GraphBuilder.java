@@ -39,7 +39,6 @@ public class GraphBuilder {
         } catch (IOException e){
             System.err.println("Error closing file.\n" + e.getMessage());
         }
-        System.out.println(map);
         return map;
     }
 
@@ -50,7 +49,7 @@ public class GraphBuilder {
         HashMap<String, Set<String>> movieActors = new HashMap<String, Set<String>>();
         BufferedReader file = null;
 
-        for (String actor : actorsID.keySet()) {
+        for (String actor : actorsID.values()) {
             graph.insertVertex(actor);
         }
 
@@ -74,7 +73,6 @@ public class GraphBuilder {
                     movieActors.put(movie, set);
                 }
             }
-            System.out.println(movieActors);
 
         } catch (IOException e) {
             System.err.println("Error reading file.\n" + e.getMessage());
@@ -86,7 +84,6 @@ public class GraphBuilder {
                 for (String costar : movieActors.get(movie)) {
                     if (!actor.equals(costar)) {
                         // If this is the first movie with both actors examined, make a new edge
-                        //TODO actor and costart need to be vertices
                         if (!graph.hasEdge(actor, costar)) {
                             // Create a set containing all movies in which both actors appear; at first, just the current
                             Set bothMovie = new HashSet<String>();
@@ -104,9 +101,28 @@ public class GraphBuilder {
             return graph;
     }
 
+    private String baconTest(Graph graph, String actor1, String actor2) {
+        if (graph.hasEdge(actor1, actor2)) {
+            return (actor1 + " starred in " + graph.getLabel(actor1, actor2) + " with " + actor2);
+        }
+        else{
+            return (actor1 + " has not been in a film with " + actor2);
+        }
+    }
+
     public static void main(String[] args) throws IOException{
-        GraphBuilder test = new GraphBuilder("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
-        System.out.println(test.buildGraph());
+        System.out.println("Test 1: graph built with test files");
+        GraphBuilder test1 = new GraphBuilder("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
+        Graph graph1 = test1.buildGraph();
+        System.out.println(graph1);
+        System.out.println(test1.baconTest(graph1,"Alice", "Kevin Bacon"));
+
+        System.out.println("\nTest 2: graph built with complete files");
+        GraphBuilder test2 = new GraphBuilder("actors.txt", "movies.txt", "movie-actors.txt");
+        Graph graph2 = test2.buildGraph();
+        System.out.println(test2.baconTest(graph2,"Meryl Streep", "Kevin Bacon"));
+        System.out.println(test2.baconTest(graph2, "Kevin Bacon", "Joe DiMaggio"));
+        System.out.println(test2.baconTest(graph2, "Kevin Bacon", "Kevin Bacon"));
 
     }
 }
