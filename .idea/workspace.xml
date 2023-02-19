@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="start KB">
+    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="p find path command in bacon game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KevinBacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KevinBacon.java" afterDir="false" />
     </list>
@@ -78,7 +78,7 @@
       <workItem from="1676762653480" duration="59000" />
       <workItem from="1676762718551" duration="697000" />
       <workItem from="1676763430831" duration="1697000" />
-      <workItem from="1676839643384" duration="3519000" />
+      <workItem from="1676839643384" duration="4398000" />
     </task>
     <task id="LOCAL-00001" summary="provided files">
       <created>1676437931276</created>
@@ -101,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676841118352</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="p find path command in bacon game">
+      <created>1676843442361</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676843442361</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +129,7 @@
     <MESSAGE value="provided files" />
     <MESSAGE value="Copied graphLib from SA5 - need AdjacencyMapGraph to stay put as DS. Filled the four methods for GraphLib." />
     <MESSAGE value="start KB" />
-    <option name="LAST_COMMIT_MESSAGE" value="start KB" />
+    <MESSAGE value="p find path command in bacon game" />
+    <option name="LAST_COMMIT_MESSAGE" value="p find path command in bacon game" />
   </component>
 </project>

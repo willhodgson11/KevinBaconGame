@@ -13,6 +13,22 @@ public class KevinBacon {
         welcome();
     }
 
+    public void infSeparation(String actor){
+        GraphLib.missingVertices(graph, tree);
+    }
+
+    public void newCenter(String name){
+        if(!graph.hasVertex(name)) {
+            System.out.println("Please enter a valid actor");
+            return;
+        }
+        this.centerUniverse = name;
+        this.tree = GraphLib.bfs(graph, name);
+        System.out.println(actor + " is now the center of the acting universe, connected to "+ unconnected +
+                        "/" + total + " actors with average separation " + GraphLib.averageSeparation(graph, centerUniverse));
+        );
+    }
+
 
     /**
      * prints the list of actors—and the movies they costarred in—that connect the
@@ -20,7 +36,6 @@ public class KevinBacon {
      * @param name name of the selected actor
      */
     public void findPath(String name){
-        tree = GraphLib.bfs(graph, centerUniverse);
         // Name must be a known vertex in the whole graph
         if(!graph.hasVertex(name)){
             System.out.println("Please enter a valid actor");
@@ -44,6 +59,7 @@ public class KevinBacon {
             System.out.println(curr + " appeared in " + movies + " with " + next);
         }
     }
+
     public void welcome() {
         int total = graph.numVertices();
         int missing = GraphLib.missingVertices(graph,  GraphLib.bfs(graph, centerUniverse)).size();
@@ -56,9 +72,8 @@ public class KevinBacon {
                 "s <low> <high>: list actors sorted by non-infinite separation from the current center, with separation between low and high\n" +
                 "u <name>: make <name> the center of the universe\n" +
                 "q: quit game\n" +
-                "\n" +
-                "Kevin Bacon is now the center of the acting universe, connected to "+ unconnected +
-                "/" + total + " actors with average separation " + GraphLib.averageSeparation(graph, centerUniverse));
+                "\n" );
+        newCenter(centerUniverse);
         getUserInput();
     }
     public void getUserInput() {
