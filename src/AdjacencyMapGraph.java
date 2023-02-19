@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Adjancency Map implementation of the Graph interface
@@ -104,6 +103,27 @@ public class AdjacencyMapGraph<V,E> implements Graph<V,E> {
 		// remove in both directions
 		removeDirected(u, v);
 		removeDirected(v, u);
+	}
+	public static <V,E> Graph<V,E> bfs(Graph<V,E> g, V source) {
+		Graph<V, E> shortestGraph = new AdjacencyMapGraph<>();
+
+		return shortestGraph;
+
+	}
+	public static <V,E> List<V> getPath(Graph<V,E> tree, V v){
+		List<V> path = new ArrayList<>();
+
+		return path;
+	}
+	public static <V,E> Set<V> missingVertices(Graph<V,E> graph, Graph<V,E> subgraph){
+		Set<V> missing = new HashSet<>();
+
+		return missing;
+	}
+	public static <V,E> double averageSeparation(Graph<V,E> tree, V root){
+		double avg = 0;
+
+		return avg;
 	}
 
 	/** 
