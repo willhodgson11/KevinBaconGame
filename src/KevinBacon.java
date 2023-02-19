@@ -24,9 +24,12 @@ public class KevinBacon {
         }
         this.centerUniverse = name;
         this.tree = GraphLib.bfs(graph, name);
-        System.out.println(actor + " is now the center of the acting universe, connected to "+ unconnected +
-                        "/" + total + " actors with average separation " + GraphLib.averageSeparation(graph, centerUniverse));
-        );
+        int total = graph.numVertices();
+        int missing = GraphLib.missingVertices(graph,  tree).size();
+        int unconnected = total - missing;
+        System.out.println(name + " is now the center of the acting universe, connected to "+ unconnected +
+                        "/" + total + " actors with average separation " + GraphLib.averageSeparation(graph, name));
+
     }
 
 
@@ -59,6 +62,15 @@ public class KevinBacon {
             System.out.println(curr + " appeared in " + movies + " with " + next);
         }
     }
+    public void sortConnections(int n) {
+
+    }
+    public void sortDegree(int low, int high) {
+
+    }
+    public void sortSeparation(int low, int high) {
+
+    }
 
     public void welcome() {
         int total = graph.numVertices();
@@ -78,9 +90,75 @@ public class KevinBacon {
     }
     public void getUserInput() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Kevin Bacon game > ");
-        String command = input.nextLine();
-
+        String func;
+        System.out.println(centerUniverse + "game > \n");
+        String[] temp = input.nextLine().split("\\ ");
+        func = temp[0];
+        switch (func) {
+            case "c" -> {
+                try {
+                    int n = Integer.parseInt(temp[1]);
+                    sortConnections(n);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Invalid entry. Try again\n");
+                    getUserInput();
+                }
+            }
+            case "d" -> {
+                if (temp.length == 3) {
+                    try {
+                        int low = Integer.parseInt(temp[1]);
+                        int high = Integer.parseInt(temp[2]);
+                        sortDegree(low, high);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Invalid entry. Try again\n");
+                        getUserInput();
+                    }
+                } else {
+                    System.out.println("Wrong number of inputs. Try again");
+                    getUserInput();
+                }
+            }
+            case "i" -> infSeparation(centerUniverse);
+            case "p" -> {
+                if (temp.length == 3) {
+                    String name = temp[1] + temp[2];
+                    findPath(name);
+                } else {
+                    System.out.println("Wrong number of inputs. Try again");
+                    getUserInput();
+                }
+            }
+            case "s" -> {
+                if (temp.length == 3) {
+                    try {
+                        int low = Integer.parseInt(temp[1]);
+                        int high = Integer.parseInt(temp[2]);
+                        sortSeparation(low, high);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Invalid entry. Try again\n");
+                        getUserInput();
+                    }
+                } else {
+                    System.out.println("Wrong number of inputs. Try again");
+                    getUserInput();
+                }
+            }
+            case "u" -> {
+                if (temp.length == 3) {
+                    String name = temp[1] + temp[2];
+                    newCenter(name);
+                } else {
+                    System.out.println("Wrong number of inputs. Try again");
+                    getUserInput();
+                }
+            }
+            case "q" -> System.exit(0);
+            default -> {
+                System.out.println("Invalid entry. Try again\n");
+                getUserInput();
+            }
+        }
     }
 
     public static void main(String[] args) throws IOException {
