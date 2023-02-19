@@ -110,8 +110,10 @@ public class GraphLib {
 	 */
 	private static <V,E> int totalSeparation(Graph<V, E> tree, V node, int degree){
 		int sum = degree;	// initialize sum to current degree of separation
+		List<V> visited = new ArrayList<>();
+		visited.add(node);
 		for (V v : tree.outNeighbors(node)){	// for each neighbor, add their degree of separation to sum
-			sum += totalSeparation(tree, v, degree+1);	// recursively call treeHeight, incrementing the degree of separation by one
+			sum += totalSeparation(tree, v, degree+1);	// recursively call totalSeparation, incrementing the degree of separation by one
 		}
 		return sum;
 	}

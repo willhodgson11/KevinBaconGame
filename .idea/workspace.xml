@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="working on getUserInput">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="added parsing of user input which calls corresponding methods, not all methods are filled in yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphLib.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KevinBacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KevinBacon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676843442361</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added parsing of user input which calls corresponding methods, not all methods are filled in yet">
+      <created>1676847834411</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676847834411</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +138,7 @@
     <MESSAGE value="Copied graphLib from SA5 - need AdjacencyMapGraph to stay put as DS. Filled the four methods for GraphLib." />
     <MESSAGE value="start KB" />
     <MESSAGE value="p find path command in bacon game" />
-    <option name="LAST_COMMIT_MESSAGE" value="p find path command in bacon game" />
+    <MESSAGE value="added parsing of user input which calls corresponding methods, not all methods are filled in yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="added parsing of user input which calls corresponding methods, not all methods are filled in yet" />
   </component>
 </project>

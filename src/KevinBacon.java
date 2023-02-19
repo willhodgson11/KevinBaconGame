@@ -62,8 +62,14 @@ public class KevinBacon {
             System.out.println(curr + " appeared in " + movies + " with " + next);
         }
     }
-    public void sortConnections(int n) {
-
+    public void bestCenters(int n) {
+        Map<Double, String> averages = new TreeMap<>();
+        for(String actor: graph.vertices()) {
+            Double avg = GraphLib.averageSeparation(graph, actor);
+            averages.put(avg, actor);
+        }
+        Map<Double, String> sortedAverages = new TreeMap<>(averages);
+        System.out.println(sortedAverages);
     }
     public void sortDegree(int low, int high) {
 
@@ -73,9 +79,6 @@ public class KevinBacon {
     }
 
     public void welcome() {
-        int total = graph.numVertices();
-        int missing = GraphLib.missingVertices(graph,  GraphLib.bfs(graph, centerUniverse)).size();
-        int unconnected = total - missing;
         System.out.println("Commands:\n" +
                 "c <#>: list top (positive number) or bottom (negative) <#> centers of the universe, sorted by average separation\n" +
                 "d <low> <high>: list actors sorted by degree, with degree between low and high\n" +
@@ -98,9 +101,9 @@ public class KevinBacon {
             case "c" -> {
                 try {
                     int n = Integer.parseInt(temp[1]);
-                    sortConnections(n);
+                    bestCenters(n);
                 } catch (NumberFormatException nfe) {
-                    System.out.println("Invalid entry. Try again\n");
+                    System.out.println("Invalid number. Try again\n");
                     getUserInput();
                 }
             }
