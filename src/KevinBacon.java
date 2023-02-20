@@ -63,13 +63,37 @@ public class KevinBacon {
         }
     }
     public void bestCenters(int n) {
-        Map<Double, String> averages = new TreeMap<>();
-        for(String actor: graph.vertices()) {
-            Double avg = GraphLib.averageSeparation(tree, actor);
-            averages.put(avg, actor);
+        if(n > tree.numVertices() - GraphLib.missingVertices(graph,  tree).size()+1) {
+            System.out.println("You input a number larger than the amount of actors. Try again.\n");
+            getUserInput();
+        } else {
+            Map<Double, String> averages = new TreeMap<>();
+            for (String actor : tree.vertices()) {
+                Double avg = GraphLib.averageSeparation(tree, actor);
+                averages.put(avg, actor);
+            }
+            Map<Double, String> sortedAverages = new TreeMap<>(averages);
+            List<String> sortedNames = new ArrayList<>();
+            List<Double> sortedSeps = new ArrayList<>();
+            for (Double key : sortedAverages.keySet()) {
+                sortedNames.add(sortedAverages.get(key));
+                sortedSeps.add(key);
+            }
+            if (n > 0) {
+                int i = 0;
+                while (i < n) {
+                    System.out.println(sortedNames.get(i) + " has average separation " + sortedSeps.get(i) + "\n");
+                    i += 1;
+                }
+            } else {
+                int i = sortedNames.toArray().length - 1;
+                for (int j = 0; j < Math.abs(n); j++) {
+                    System.out.println(sortedNames.get(i) + "has average separation " + sortedSeps.get(i) + "\n");
+                    i -= 1;
+                }
+            }
+            getUserInput();
         }
-        Map<Double, String> sortedAverages = new TreeMap<>(averages);
-        System.out.println(sortedAverages);
     }
     public void sortDegree(int low, int high) {
 
@@ -93,22 +117,22 @@ public class KevinBacon {
     }
     public void getUserInput() {
         Scanner input = new Scanner(System.in);
+        String func;
         System.out.println(centerUniverse + "game > \n");
-        String line = input.nextLine();
-        String func = line.substring(0, line.indexOf(' '));
-        String param = line.substring(line.indexOf(' ') + 1);
-        System.out.println(func);
-        if (func.length() == 0){
-            System.out.println("Please enter a name.\n");
-            getUserInput();
-        }
+        String[] temp = input.nextLine().split("\\ ");
+        func = temp[0];
         switch (func) {
             case "c" -> {
-                try {
-                    int n = Integer.parseInt(param);
-                    bestCenters(n);
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Invalid number. Try again\n");
+                if(temp.length > 1) {
+                    try {
+                        int n = Integer.parseInt(temp[1]);
+                        bestCenters(n);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Invalid number. Try again\n");
+                        getUserInput();
+                    }
+                }else {
+                    System.out.println("You must input a number as well. Try again");
                     getUserInput();
                 }
             }
@@ -129,11 +153,11 @@ public class KevinBacon {
             }
             case "i" -> infSeparation(centerUniverse);
             case "p" -> {
-                if(graph.hasVertex(param)) {
-                    findPath(param);
-                }
-                else{
-                    System.out.println("Please enter a valid actor");
+                if (temp.length == 3) {
+                    String name = temp[1] + temp[2];
+                    findPath(name);
+                } else {
+                    System.out.println("Wrong number of inputs. Try again");
                     getUserInput();
                 }
             }
@@ -153,11 +177,11 @@ public class KevinBacon {
                 }
             }
             case "u" -> {
-                if(graph.hasVertex(param)) {
-                    newCenter(param);
-                }
-                else {
-                    System.out.println("Please enter a valid actor");
+                if (temp.length == 3) {
+                    String name = temp[1] + temp[2];
+                    newCenter(name);
+                } else {
+                    System.out.println("Wrong number of inputs. Try again");
                     getUserInput();
                 }
             }
