@@ -327,7 +327,7 @@ public class KevinBacon {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        KevinBacon test0 = new KevinBacon("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
-        //KevinBacon game = new KevinBacon("actors.txt", "movies.txt", "movie-actors.txt");
+        //evinBacon test0 = new KevinBacon("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
+        KevinBacon game = new KevinBacon("actors.txt", "movies.txt", "movie-actors.txt");
     }
 }

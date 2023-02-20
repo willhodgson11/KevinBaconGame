@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="bugs begone">
+    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="completed all methods">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KevinBacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KevinBacon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676861942015</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="completed all methods">
+      <created>1676862786357</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1676862786357</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +214,7 @@
     <MESSAGE value="sortDegree finished?" />
     <MESSAGE value="fixed no space bug" />
     <MESSAGE value="bugs begone" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugs begone" />
+    <MESSAGE value="completed all methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed all methods" />
   </component>
 </project>
