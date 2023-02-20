@@ -27,7 +27,8 @@ public class KevinBacon {
      * @param actor
      */
     public void infSeparation(String actor){
-        GraphLib.missingVertices(graph, tree);
+        System.out.println(GraphLib.missingVertices(graph, tree));
+        getUserInput();
     }
 
     /**
@@ -78,6 +79,7 @@ public class KevinBacon {
             Set<String> movies = graph.getLabel(curr, next);
             System.out.println(curr + " appeared in " + movies + " with " + next);
         }
+        getUserInput();
     }
     public void bestCenters(int n) {
         if(n > tree.numVertices() - GraphLib.missingVertices(graph,  tree).size()+1) {
@@ -152,7 +154,6 @@ public class KevinBacon {
             func = line;
             param = "";
         }
-        System.out.println(func);
         if (func.length() == 0){
             System.out.println("Please enter a name.\n");
             getUserInput();
@@ -211,11 +212,11 @@ public class KevinBacon {
             }
             case "u" -> {
                 if (graph.hasVertex(param)) {
-                    findPath(param);
+                    newCenter(param);
                 } else {
                     System.out.println("Please enter a valid actor");
-                    newCenter(param);
                 }
+                getUserInput();
             }
             case "q" -> System.exit(0);
             default -> {
