@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="sortDegree finished?">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="bugs begone">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KevinBacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KevinBacon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676858009230</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fixed no space bug">
+      <created>1676858905896</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676858905896</updated>
+    </task>
+    <task id="LOCAL-00012" summary="bugs begone">
+      <created>1676859174592</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676859174592</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +191,8 @@
     <MESSAGE value="fixed stackOverflow bug" />
     <MESSAGE value="bestcenters done" />
     <MESSAGE value="sortDegree finished?" />
-    <option name="LAST_COMMIT_MESSAGE" value="sortDegree finished?" />
+    <MESSAGE value="fixed no space bug" />
+    <MESSAGE value="bugs begone" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugs begone" />
   </component>
 </project>

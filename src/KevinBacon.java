@@ -1,7 +1,13 @@
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * Kevin Bacon Game. Starting with an actor, see if they have been in a movie with
+ * someone who has been in a movie with someone who has been in a movie ... who has
+ * been in a movie with Kevin Bacon.
+ * @author willhodgson, Dartmouth CS10, Winter 2023
+ * @author cullumtwiss, Dartmouth CS10, Winter 2023
+ */
 
 public class KevinBacon {
     private AdjacencyMapGraph<String, Set<String>> graph;
@@ -122,6 +128,7 @@ public class KevinBacon {
                 System.out.println(vert + " has degree " + degree);
             }
         }
+        getUserInput();
     }
     public void sortSeparation(int low, int high) {
 
@@ -169,8 +176,8 @@ public class KevinBacon {
                 }
             }
             case "d" -> {
-                String[] pair = param.split("// ");
-                if (pair.length == 3){
+                String[] pair = param.split("\\ ");
+                if (pair.length == 2){
                     try {
                         int low = Integer.parseInt(pair[0]);
                         int high = Integer.parseInt(pair[1]);
@@ -194,8 +201,7 @@ public class KevinBacon {
                 }
             }
             case "s" -> {
-                String[] pair = param.split("// ");
-                System.out.println(pair[0]);
+                String[] pair = param.split("\\ ");
                 if (pair.length == 2){
                     try {
                         int low = Integer.parseInt(pair[0]);
