@@ -28,7 +28,7 @@ public class KevinBacon {
         int missing = GraphLib.missingVertices(graph,  tree).size();
         int unconnected = total - missing;
         System.out.println(name + " is now the center of the acting universe, connected to "+ unconnected +
-                        "/" + total + " actors with average separation " + GraphLib.averageSeparation(graph, name));
+                        "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name));
 
     }
 
@@ -65,7 +65,7 @@ public class KevinBacon {
     public void bestCenters(int n) {
         Map<Double, String> averages = new TreeMap<>();
         for(String actor: graph.vertices()) {
-            Double avg = GraphLib.averageSeparation(graph, actor);
+            Double avg = GraphLib.averageSeparation(tree, actor);
             averages.put(avg, actor);
         }
         Map<Double, String> sortedAverages = new TreeMap<>(averages);
