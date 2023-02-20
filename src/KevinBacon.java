@@ -28,7 +28,7 @@ public class KevinBacon {
         int missing = GraphLib.missingVertices(graph,  tree).size();
         int unconnected = total - missing;
         System.out.println(name + " is now the center of the acting universe, connected to "+ unconnected +
-                        "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name));
+                "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name));
 
     }
 
@@ -128,24 +128,20 @@ public class KevinBacon {
         }
         switch (func) {
             case "c" -> {
-                if(temp.length > 1) {
-                    try {
-                        int n = Integer.parseInt(temp[1]);
-                        bestCenters(n);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Invalid number. Try again\n");
-                        getUserInput();
-                    }
-                }else {
-                    System.out.println("You must input a number as well. Try again");
+                try {
+                    int n = Integer.parseInt(param);
+                    bestCenters(n);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Invalid number. Try again\n");
                     getUserInput();
                 }
             }
             case "d" -> {
-                if (temp.length == 3) {
+                String[] pair = param.split("// ");
+                if (pair.length == 2){
                     try {
-                        int low = Integer.parseInt(temp[1]);
-                        int high = Integer.parseInt(temp[2]);
+                        int low = Integer.parseInt(pair[0]);
+                        int high = Integer.parseInt(pair[1]);
                         sortDegree(low, high);
                     } catch (NumberFormatException nfe) {
                         System.out.println("Invalid entry. Try again\n");
@@ -158,19 +154,19 @@ public class KevinBacon {
             }
             case "i" -> infSeparation(centerUniverse);
             case "p" -> {
-                if (temp.length == 3) {
-                    String name = temp[1] + temp[2];
-                    findPath(name);
+                if (graph.hasVertex(param)) {
+                    findPath(param);
                 } else {
-                    System.out.println("Wrong number of inputs. Try again");
+                    System.out.println("Please enter a valid actor");
                     getUserInput();
                 }
             }
             case "s" -> {
-                if (temp.length == 3) {
+                String[] pair = param.split("// ");
+                if (pair.length == 2){
                     try {
-                        int low = Integer.parseInt(temp[1]);
-                        int high = Integer.parseInt(temp[2]);
+                        int low = Integer.parseInt(pair[0]);
+                        int high = Integer.parseInt(pair[1]);
                         sortSeparation(low, high);
                     } catch (NumberFormatException nfe) {
                         System.out.println("Invalid entry. Try again\n");
@@ -182,12 +178,11 @@ public class KevinBacon {
                 }
             }
             case "u" -> {
-                if (temp.length == 3) {
-                    String name = temp[1] + temp[2];
-                    newCenter(name);
+                if (graph.hasVertex(param)) {
+                    findPath(param);
                 } else {
-                    System.out.println("Wrong number of inputs. Try again");
-                    getUserInput();
+                    System.out.println("Please enter a valid actor");
+                    newCenter(param);
                 }
             }
             case "q" -> System.exit(0);
