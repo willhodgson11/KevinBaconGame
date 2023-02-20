@@ -6,26 +6,42 @@ public class KevinBacon {
     private  String centerUniverse = "Kevin Bacon";
     private  Graph<String, Set<String>> tree;
 
-
+    /**
+     * constructor class, initializes a kevinBacon game with the provided files
+     * @param actorsFile
+     * @param moviesFile
+     * @param movieActorFile
+     * @throws IOException
+     */
     public KevinBacon(String actorsFile, String moviesFile, String movieActorFile) throws IOException {
         GraphBuilder graphy = new GraphBuilder(actorsFile, moviesFile, movieActorFile);
         this.graph = graphy.buildGraph();
         welcome();
     }
 
+    /**
+     * prints a list of all vertices with infinite separation - that is, vertices that
+     * cannot be reached by bfs
+     * @param actor
+     */
     public void infSeparation(String actor){
         GraphLib.missingVertices(graph, tree);
     }
 
+    /**
+     * resets the center of the universe to the provided actor, recalculating bfs tree
+     * @param name valid actor
+     */
     public void newCenter(String name){
-        if(!graph.hasVertex(name)) {
-            System.out.println("Please enter a valid actor");
-            return;
-        }
+        // reset center of universe
         this.centerUniverse = name;
+        // reset bfs tree with new center
         this.tree = GraphLib.bfs(graph, name);
+        // calculate total number of vertices
         int total = graph.numVertices();
+        // find number of vertices that cannot be reached by bfs
         int missing = GraphLib.missingVertices(graph,  tree).size();
+        // calculate all connected vertices
         int unconnected = total - missing;
         System.out.println(name + " is now the center of the acting universe, connected to "+ unconnected +
                 "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name));
