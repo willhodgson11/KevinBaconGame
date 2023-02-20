@@ -33,6 +33,7 @@ public class KevinBacon {
      * @param actor
      */
     public void infSeparation(String actor){
+        // print all vertices that can't be reached by bfs
         System.out.println(GraphLib.missingVertices(graph, tree));
         getUserInput();
     }
@@ -106,6 +107,7 @@ public class KevinBacon {
                 Double avg = GraphLib.averageSeparation(tree, actor)+1;
                 averages.put(avg, actor);
             }
+            // TODO comment
             Map<Double, String> sortedAverages = new TreeMap<>(averages);
             List<String> sortedNames = new ArrayList<>();
             List<Double> sortedSeps = new ArrayList<>();

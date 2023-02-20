@@ -110,6 +110,13 @@ public class GraphBuilder {
             return graph;
     }
 
+    /**
+     * test method, determines if two actors have starred in a movie together
+     * @param graph
+     * @param actor1
+     * @param actor2
+     * @return
+     */
     private String baconTest(Graph graph, String actor1, String actor2) {
         if (graph.hasEdge(actor1, actor2)) {
             //if there's an edge between them, they've been in a movie together, so print that set
