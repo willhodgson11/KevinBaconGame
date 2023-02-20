@@ -117,10 +117,15 @@ public class KevinBacon {
     }
     public void getUserInput() {
         Scanner input = new Scanner(System.in);
-        String func;
         System.out.println(centerUniverse + "game > \n");
-        String[] temp = input.nextLine().split("\\ ");
-        func = temp[0];
+        String line = input.nextLine();
+        String func = line.substring(0, line.indexOf(' '));
+        String param = line.substring(line.indexOf(' ') + 1);
+        System.out.println(func);
+        if (func.length() == 0){
+            System.out.println("Please enter a name.\n");
+            getUserInput();
+        }
         switch (func) {
             case "c" -> {
                 if(temp.length > 1) {
