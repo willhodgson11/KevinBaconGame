@@ -1,0 +1,127 @@
+Index: src/KevinBacon.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.*;\r\nimport java.util.Map;\r\nimport java.util.TreeMap;\r\n\r\npublic class KevinBacon {\r\n    private AdjacencyMapGraph<String, String> graph;\r\n\r\n    public AdjacencyMapGraph<String, String> getGraph(String actorsFile, String moviesFile, String movieActorFile) throws IOException {\r\n\r\n        return graph;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/KevinBacon.java b/src/KevinBacon.java
+--- a/src/KevinBacon.java	(revision 5c47d1863254a30880a1d0f31ed9f4913783812f)
++++ b/src/KevinBacon.java	(date 1676841823800)
+@@ -4,9 +4,33 @@
+ 
+ public class KevinBacon {
+     private AdjacencyMapGraph<String, String> graph;
+-
++    private String centerUniverse = "Kevin Bacon";
+     public AdjacencyMapGraph<String, String> getGraph(String actorsFile, String moviesFile, String movieActorFile) throws IOException {
+ 
+         return graph;
+     }
++    public void setCenterUniverse(String centerUniverse) {
++        this.centerUniverse = centerUniverse;
++    }
++    public void welcome() {
++        System.out.println("Commands:\n" +
++                "c <#>: list top (positive number) or bottom (negative) <#> centers of the universe, sorted by average separation\n" +
++                "d <low> <high>: list actors sorted by degree, with degree between low and high\n" +
++                "i: list actors with infinite separation from the current center\n" +
++                "p <name>: find path from <name> to current center of the universe\n" +
++                "s <low> <high>: list actors sorted by non-infinite separation from the current center, with separation between low and high\n" +
++                "u <name>: make <name> the center of the universe\n" +
++                "q: quit game\n" +
++                "Kevin Bacon is now the center of the acting universe, connected to " + graph.numVertices()- GraphLib.missingVertices(graph, GraphLib.bfs(graph, centerUniverse)
++                + "actors with average separation [#]"););
++        getUserInput();
++    }
++    public void getUserInput() {
++        System.out.println(center is now the center of the acting universe, connected to " + graph.numVertices()- GraphLib.missingVertices(graph, GraphLib.bfs(graph, centerUniverse)
++                + "actors with average separation [#]"););
++    }
++
++    public static void main(String[] args) {
++
++    }
+ }
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_16\" default=\"true\" project-jdk-name=\"16\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 5c47d1863254a30880a1d0f31ed9f4913783812f)
++++ b/.idea/misc.xml	(date 1676839307153)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8e798034-9bb3-4c41-9fd4-e40bcb11d78f\" name=\"Changes\" comment=\"provided files\">\r\n      <change afterPath=\"$PROJECT_DIR$/KevinBaconGame.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/AdjacencyMapGraph.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/AdjacencyMapGraph.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GraphBuilder.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GraphBuilder.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2LlEukimXwewMGbcDuxtmkJjCs7\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/16037/School/23W/CS10/KevinBaconGame&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src\" />\r\n      <recent name=\"$PROJECT_DIR$\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8e798034-9bb3-4c41-9fd4-e40bcb11d78f\" name=\"Changes\" comment=\"\" />\r\n      <created>1676437495930</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1676437495930</updated>\r\n      <workItem from=\"1676437498080\" duration=\"1154000\" />\r\n      <workItem from=\"1676685471468\" duration=\"122000\" />\r\n      <workItem from=\"1676685598585\" duration=\"17000\" />\r\n      <workItem from=\"1676685620738\" duration=\"33000\" />\r\n      <workItem from=\"1676685675949\" duration=\"7000\" />\r\n      <workItem from=\"1676685751283\" duration=\"8542000\" />\r\n      <workItem from=\"1676762653480\" duration=\"59000\" />\r\n      <workItem from=\"1676762718551\" duration=\"697000\" />\r\n      <workItem from=\"1676763430831\" duration=\"1697000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"provided files\">\r\n      <created>1676437931276</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1676437931276</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"provided files\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"provided files\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5c47d1863254a30880a1d0f31ed9f4913783812f)
++++ b/.idea/workspace.xml	(date 1676842100087)
+@@ -4,12 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="provided files">
+-      <change afterPath="$PROJECT_DIR$/KevinBaconGame.iml" afterDir="false" />
++    <list default="true" id="8e798034-9bb3-4c41-9fd4-e40bcb11d78f" name="Changes" comment="commented GraphBuilder and added empty methods to AdjacencyMapGraph to fill in">
+       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_17_23__20_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_17_23__20_58__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_18_23__22_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_18_23__22_34__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/AdjacencyMapGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdjacencyMapGraph.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GraphBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphBuilder.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/KevinBacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KevinBacon.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -80,7 +80,7 @@
+       <workItem from="1676685751283" duration="8542000" />
+       <workItem from="1676762653480" duration="59000" />
+       <workItem from="1676762718551" duration="697000" />
+-      <workItem from="1676763430831" duration="1697000" />
++      <workItem from="1676763430831" duration="6246000" />
+     </task>
+     <task id="LOCAL-00001" summary="provided files">
+       <created>1676437931276</created>
+@@ -89,7 +89,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1676437931276</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="commented GraphBuilder and added empty methods to AdjacencyMapGraph to fill in">
++      <created>1676765188316</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1676765188316</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -108,6 +115,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="provided files" />
+-    <option name="LAST_COMMIT_MESSAGE" value="provided files" />
++    <MESSAGE value="commented GraphBuilder and added empty methods to AdjacencyMapGraph to fill in" />
++    <option name="LAST_COMMIT_MESSAGE" value="commented GraphBuilder and added empty methods to AdjacencyMapGraph to fill in" />
+   </component>
+ </project>
+\ No newline at end of file
