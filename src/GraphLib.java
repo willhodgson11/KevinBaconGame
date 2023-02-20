@@ -55,10 +55,12 @@ public class GraphLib {
 		if(!tree.hasVertex(v)){return null;}
 		List<V> path = new ArrayList<>();	// initialize new list of vertices
 		path.add(v);						// add given vertex to list
+		Iterator<V> neighbor = tree.outNeighbors(v).iterator();
 		// while the current vertex has a neighbor to visit, create an iterator for the neighbors of the current vertex
-		for (Iterator<V> neighbor = tree.outNeighbors(v).iterator(); neighbor.hasNext(); ) {
-			v = neighbor.next();	//
-			path.add(v);
+		while (neighbor.hasNext()) {
+			v = neighbor.next();	// define current vertex as neighbor
+			neighbor = tree.outNeighbors(v).iterator(); // reset iterator
+			path.add(v);	// add new vertex to path
 		}
 		return path;
 	}
