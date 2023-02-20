@@ -107,11 +107,13 @@ public class KevinBacon {
                 Double avg = GraphLib.averageSeparation(tree, actor)+1;
                 averages.put(avg, actor);
             }
-            // TODO comment
+            // sort the map of averages by key
             Map<Double, String> sortedAverages = new TreeMap<>(averages);
+            //it's not possible to index a map like an array, so we just copy the map to two arrays
             List<String> sortedNames = new ArrayList<>();
             List<Double> sortedSeps = new ArrayList<>();
             for (Double key : sortedAverages.keySet()) {
+                //add keys to sortedSeps and values to sortedNames, the indexes will line up
                 sortedNames.add(sortedAverages.get(key));
                 sortedSeps.add(key);
             }
@@ -119,7 +121,7 @@ public class KevinBacon {
             if (n > 0) {
                 int i = 0;
                 // print the first n elements in the sorted list with their separation
-                while (i < n) {
+                while (i < n-1) {
                     System.out.println(sortedNames.get(i) + " has average separation " + sortedSeps.get(i) + "\n");
                     i += 1;
                 }
@@ -138,7 +140,7 @@ public class KevinBacon {
     }
 
     /**
-     * print a list of actors with degree between two provided valus
+     * print a list of actors with degree between two provided values
      * @param low threshold for inclusion in list
      * @param high maximum degree for inclusion in list
      */
@@ -173,7 +175,7 @@ public class KevinBacon {
         for(String vertex : graph.vertices()){
             // if actor is connected to center
             if(tree.hasVertex(vertex)){
-                // get that actors separation, associate it with their name
+                // get that actor's separation, associate it with their name
                 int separation = GraphLib.getPath(tree, vertex).size();
                 if(separation >= low && separation <= high){
                     separationMap.put(vertex, separation);
@@ -329,7 +331,8 @@ public class KevinBacon {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        //evinBacon test0 = new KevinBacon("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
-        KevinBacon game = new KevinBacon("actors.txt", "movies.txt", "movie-actors.txt");
+        //KevinBacon test0 = new KevinBacon("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
+       KevinBacon game = new KevinBacon("actors.txt", "movies.txt", "movie-actors.txt");
+
     }
 }

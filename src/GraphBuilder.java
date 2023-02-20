@@ -95,7 +95,7 @@ public class GraphBuilder {
                         // If this is the first movie with both actors examined, make a new edge
                         if (!graph.hasEdge(actor, costar)) {
                             // Create a set containing all movies in which both actors appear; at first, just the current
-                            Set bothMovie = new HashSet<String>();
+                            Set<String> bothMovie = new HashSet<>();
                             bothMovie.add(movie);
                             graph.insertUndirected(actor, costar, bothMovie);
                         }
@@ -115,7 +115,7 @@ public class GraphBuilder {
      * @param graph
      * @param actor1
      * @param actor2
-     * @return
+     * @return set of movies that both actors have been in
      */
     private String baconTest(Graph graph, String actor1, String actor2) {
         if (graph.hasEdge(actor1, actor2)) {
@@ -130,13 +130,13 @@ public class GraphBuilder {
     public static void main(String[] args) throws IOException{
         System.out.println("Test 1: graph built with test files");
         GraphBuilder test1 = new GraphBuilder("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
-        Graph graph1 = test1.buildGraph();
+        Graph<String, Set<String>> graph1 = test1.buildGraph();
         System.out.println(graph1);
         System.out.println(test1.baconTest(graph1,"Alice", "Kevin Bacon"));
 
         System.out.println("\nTest 2: graph built with complete files");
         GraphBuilder test2 = new GraphBuilder("actors.txt", "movies.txt", "movie-actors.txt");
-        Graph graph2 = test2.buildGraph();
+        Graph<String, Set<String>> graph2 = test2.buildGraph();
         System.out.println(test2.baconTest(graph2,"Meryl Streep", "Kevin Bacon"));
         System.out.println(test2.baconTest(graph2, "Kevin Bacon", "Joe DiMaggio"));
         System.out.println(test2.baconTest(graph2, "Kevin Bacon", "Kevin Bacon"));
