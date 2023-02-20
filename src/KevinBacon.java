@@ -155,8 +155,38 @@ public class KevinBacon {
         }
         getUserInput();
     }
-    public void sortSeparation(int low, int high) {
 
+    /**
+     * print list actors sorted by non-infinite separation from the current center,
+     * with separation between low and high
+     * @param low minimum degree of separation
+     * @param high maximum degree of separation
+     */
+    public void sortSeparation(int low, int high) {
+        // create a map to associate an actor with their degree of separation
+        Map<String, Integer> separationMap = new HashMap<>();
+        // create a list of vertices sorted by separation
+        List<String> vertices = new ArrayList<String>();
+        // for each actor
+        for(String vertex : graph.vertices()){
+            // if actor is connected to center
+            if(tree.hasVertex(vertex)){
+                // get that actors separation, associate it with their name
+                int separation = GraphLib.getPath(tree, vertex).size();
+                if(separation >= low && separation <= high){
+                    separationMap.put(vertex, separation);
+                    // and add their name to the list
+                    vertices.add(vertex);
+                }
+            }
+        }
+        // sort list in ascending order of separation
+        vertices.sort((String v1, String v2)-> separationMap.get(v1) - separationMap.get(v2));
+        // print each actor in list and their separation
+        for (String v : vertices){
+            System.out.println(v + " has separation " + separationMap.get(v));
+        }
+        getUserInput();
     }
 
     /**
