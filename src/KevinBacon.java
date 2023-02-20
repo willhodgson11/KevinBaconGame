@@ -88,7 +88,7 @@ public class KevinBacon {
             } else {
                 int i = sortedNames.toArray().length - 1;
                 for (int j = 0; j < Math.abs(n); j++) {
-                    System.out.println(sortedNames.get(i) + "has average separation " + sortedSeps.get(i) + "\n");
+                    System.out.println(sortedNames.get(i) + " has average separation " + sortedSeps.get(i) + "\n");
                     i -= 1;
                 }
             }
@@ -96,7 +96,13 @@ public class KevinBacon {
         }
     }
     public void sortDegree(int low, int high) {
-
+        List<String> vertices = GraphLib.verticesByInDegree(tree);
+        for(String vert: vertices) {
+            int degree = tree.inDegree(vert);
+            if((degree >= low) && (degree <= high)) {
+                System.out.println(vert + " has degree " + degree);
+            }
+        }
     }
     public void sortSeparation(int low, int high) {
 
@@ -138,7 +144,7 @@ public class KevinBacon {
             }
             case "d" -> {
                 String[] pair = param.split("// ");
-                if (pair.length == 2){
+                if (pair.length == 3){
                     try {
                         int low = Integer.parseInt(pair[0]);
                         int high = Integer.parseInt(pair[1]);
