@@ -53,7 +53,7 @@ public class KevinBacon {
         // calculate all connected vertices
         int unconnected = total - missing;
         System.out.println(name + " is now the center of the acting universe, connected to "+ unconnected +
-                "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name));
+                "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name) +1);
 
     }
 
@@ -87,14 +87,23 @@ public class KevinBacon {
         }
         getUserInput();
     }
+
+    /**
+     * list top (positive number) or bottom (negative) <#> centers of the universe, sorted by average separation
+     * @param n number of centers to print
+     */
     public void bestCenters(int n) {
+        // number of actors must be less than or equal to total number of actors
         if(n > tree.numVertices() - GraphLib.missingVertices(graph,  tree).size()+1) {
             System.out.println("You input a number larger than the amount of actors. Try again.\n");
             getUserInput();
         } else {
+            // create a new map that holds an actor and their average degree of separation
             Map<Double, String> averages = new TreeMap<>();
+            // For each actor
             for (String actor : tree.vertices()) {
-                Double avg = GraphLib.averageSeparation(tree, actor);
+                // get their average degree of separation to all other actors and add to map
+                Double avg = GraphLib.averageSeparation(tree, actor)+1;
                 averages.put(avg, actor);
             }
             Map<Double, String> sortedAverages = new TreeMap<>(averages);
@@ -104,14 +113,19 @@ public class KevinBacon {
                 sortedNames.add(sortedAverages.get(key));
                 sortedSeps.add(key);
             }
+            // if n is positive,
             if (n > 0) {
                 int i = 0;
+                // print the first n elements in the sorted list with their separation
                 while (i < n) {
                     System.out.println(sortedNames.get(i) + " has average separation " + sortedSeps.get(i) + "\n");
                     i += 1;
                 }
-            } else {
+            }
+            // if n is negative
+            else {
                 int i = sortedNames.toArray().length - 1;
+                // print the last n elements in the sorted list with their separation
                 for (int j = 0; j < Math.abs(n); j++) {
                     System.out.println(sortedNames.get(i) + " has average separation " + sortedSeps.get(i) + "\n");
                     i -= 1;
@@ -120,11 +134,22 @@ public class KevinBacon {
             getUserInput();
         }
     }
+
+    /**
+     * print a list of actors with degree between two provided valus
+     * @param low threshold for inclusion in list
+     * @param high maximum degree for inclusion in list
+     */
     public void sortDegree(int low, int high) {
+        // create a list of vertices sorted by inDegree
         List<String> vertices = GraphLib.verticesByInDegree(tree);
+        // for each actor in the list
         for(String vert: vertices) {
+            // get their inDegree
             int degree = tree.inDegree(vert);
+            // if their indegree falls between the provided goalposts
             if((degree >= low) && (degree <= high)) {
+                // print their name and inDegree
                 System.out.println(vert + " has degree " + degree);
             }
         }
@@ -134,7 +159,12 @@ public class KevinBacon {
 
     }
 
+    /**
+     * method to start game.Prints valid commands, sets center of universe to default (Kevin Bacon)
+     * and begin prompting user input
+     */
     public void welcome() {
+        // Print list of valid commands
         System.out.println("Commands:\n" +
                 "c <#>: list top (positive number) or bottom (negative) <#> centers of the universe, sorted by average separation\n" +
                 "d <low> <high>: list actors sorted by degree, with degree between low and high\n" +
@@ -144,30 +174,44 @@ public class KevinBacon {
                 "u <name>: make <name> the center of the universe\n" +
                 "q: quit game\n" +
                 "\n" );
+        // set center of universe to default
         newCenter(centerUniverse);
+        // begin prompting user input
         getUserInput();
     }
+
+    /**
+     * Method to take user input from the command line and determine
+     */
     public void getUserInput() {
+        // Create a scanner to receive input
         Scanner input = new Scanner(System.in);
         System.out.println(centerUniverse + "game > \n");
         String line = input.nextLine();
         String func;
         String param;
+        // Split line by first space character
         if(line.contains(" ")) {
+            // get command character
             func = line.substring(0, line.indexOf(' '));
+            // get provided parameter - name, integers, etc.
             param = line.substring(line.indexOf(' ') + 1);
         }
+        // if there is no space character, then just a command call
         else {
             func = line;
             param = "";
         }
+        // user input must not be empty
         if (func.length() == 0){
             System.out.println("Please enter a name.\n");
             getUserInput();
         }
         switch (func) {
+            // function c - top/bottom centers of universe
             case "c" -> {
                 try {
+                    // get the provided number of centers and print top or bottom n centers
                     int n = Integer.parseInt(param);
                     bestCenters(n);
                 } catch (NumberFormatException nfe) {
@@ -175,10 +219,14 @@ public class KevinBacon {
                     getUserInput();
                 }
             }
+            // function d - actors sorted by inDegree
             case "d" -> {
+                // split the provided parameter into two inputs
                 String[] pair = param.split("\\ ");
+                // must contain exactly two inputs
                 if (pair.length == 2){
                     try {
+                        // determine the goalposts and print a sorted list of actors with indegree between them
                         int low = Integer.parseInt(pair[0]);
                         int high = Integer.parseInt(pair[1]);
                         sortDegree(low, high);
@@ -191,8 +239,11 @@ public class KevinBacon {
                     getUserInput();
                 }
             }
+            // function i - list actors with infinite separation
             case "i" -> infSeparation(centerUniverse);
+            // function p - find path from provided actor to center of universe
             case "p" -> {
+                // graph must contain provided actor
                 if (graph.hasVertex(param)) {
                     findPath(param);
                 } else {
@@ -200,10 +251,14 @@ public class KevinBacon {
                     getUserInput();
                 }
             }
+            // function s - list actors sorted by separation between two goalposts
             case "s" -> {
+                // split parameter into two inputs
                 String[] pair = param.split("\\ ");
+                // must contain exactly two inputs
                 if (pair.length == 2){
                     try {
+                        // parse integer goalposts and print sorted list of separation between them
                         int low = Integer.parseInt(pair[0]);
                         int high = Integer.parseInt(pair[1]);
                         sortSeparation(low, high);
@@ -216,7 +271,9 @@ public class KevinBacon {
                     getUserInput();
                 }
             }
+            // function u - set a new center of universe
             case "u" -> {
+                // graph must contain actor
                 if (graph.hasVertex(param)) {
                     newCenter(param);
                 } else {
@@ -224,6 +281,7 @@ public class KevinBacon {
                 }
                 getUserInput();
             }
+            // function q - quit program
             case "q" -> System.exit(0);
             default -> {
                 System.out.println("Invalid entry. Try again\n");
@@ -232,6 +290,12 @@ public class KevinBacon {
         }
     }
 
+
+    /**
+     * Main method with test case and complete game
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         KevinBacon test0 = new KevinBacon("actorsTest.txt", "moviesTest.txt", "movie-actorsTest.txt");
         //KevinBacon game = new KevinBacon("actors.txt", "movies.txt", "movie-actors.txt");
