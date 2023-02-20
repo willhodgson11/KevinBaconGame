@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+
+
 public class KevinBacon {
     private AdjacencyMapGraph<String, Set<String>> graph;
     private  String centerUniverse = "Kevin Bacon";
@@ -47,7 +49,6 @@ public class KevinBacon {
                 "/" + total + " actors with average separation " + GraphLib.averageSeparation(tree, name));
 
     }
-
 
     /**
      * prints the list of actors—and the movies they costarred in—that connect the
@@ -141,8 +142,16 @@ public class KevinBacon {
         Scanner input = new Scanner(System.in);
         System.out.println(centerUniverse + "game > \n");
         String line = input.nextLine();
-        String func = line.substring(0, line.indexOf(' '));
-        String param = line.substring(line.indexOf(' ') + 1);
+        String func;
+        String param;
+        if(line.contains(" ")) {
+            func = line.substring(0, line.indexOf(' '));
+            param = line.substring(line.indexOf(' ') + 1);
+        }
+        else {
+            func = line;
+            param = "";
+        }
         System.out.println(func);
         if (func.length() == 0){
             System.out.println("Please enter a name.\n");
@@ -185,6 +194,7 @@ public class KevinBacon {
             }
             case "s" -> {
                 String[] pair = param.split("// ");
+                System.out.println(pair[0]);
                 if (pair.length == 2){
                     try {
                         int low = Integer.parseInt(pair[0]);
