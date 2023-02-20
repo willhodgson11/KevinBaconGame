@@ -131,7 +131,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676856391564</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="bestcenters done">
+      <created>1676856903796</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676856903796</updated>
+    </task>
+    <task id="LOCAL-00009" summary="bestcenters done">
+      <created>1676856977565</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676856977566</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
