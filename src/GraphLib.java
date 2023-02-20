@@ -96,7 +96,7 @@ public class GraphLib {
 		// define denominator as the total number of elements in the tree
 		int numEle = tree.numVertices();
 		// return total degree of separation over number of elements in tree, excluding the root
-		return (double) total/ (double) numEle - 1;
+		return (double) total/ (double) (numEle - 1);
 	}
 
 	/**

@@ -93,14 +93,19 @@ public class KevinBacon {
     }
     public void getUserInput() {
         Scanner input = new Scanner(System.in);
-        String func;
         System.out.println(centerUniverse + "game > \n");
-        String[] temp = input.nextLine().split("\\ ");
-        func = temp[0];
+        String line = input.nextLine();
+        String func = line.substring(0, line.indexOf(' '));
+        String param = line.substring(line.indexOf(' ') + 1);
+        System.out.println(func);
+        if (func.length() == 0){
+            System.out.println("Please enter a name.\n");
+            getUserInput();
+        }
         switch (func) {
             case "c" -> {
                 try {
-                    int n = Integer.parseInt(temp[1]);
+                    int n = Integer.parseInt(param);
                     bestCenters(n);
                 } catch (NumberFormatException nfe) {
                     System.out.println("Invalid number. Try again\n");
@@ -124,11 +129,11 @@ public class KevinBacon {
             }
             case "i" -> infSeparation(centerUniverse);
             case "p" -> {
-                if (temp.length == 3) {
-                    String name = temp[1] + temp[2];
-                    findPath(name);
-                } else {
-                    System.out.println("Wrong number of inputs. Try again");
+                if(graph.hasVertex(param)) {
+                    findPath(param);
+                }
+                else{
+                    System.out.println("Please enter a valid actor");
                     getUserInput();
                 }
             }
@@ -148,11 +153,11 @@ public class KevinBacon {
                 }
             }
             case "u" -> {
-                if (temp.length == 3) {
-                    String name = temp[1] + temp[2];
-                    newCenter(name);
-                } else {
-                    System.out.println("Wrong number of inputs. Try again");
+                if(graph.hasVertex(param)) {
+                    newCenter(param);
+                }
+                else {
+                    System.out.println("Please enter a valid actor");
                     getUserInput();
                 }
             }
